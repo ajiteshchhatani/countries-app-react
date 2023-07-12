@@ -12,7 +12,7 @@ const Card = ({ country }: CardPropType) => {
   return (
     <div
       className={`flex flex-col flex-wrap gap-2 w-[22%] rounded-md ${
-        theme.theme === "dark" ? `bg-card-body-dark` : "bg-white"
+        theme.themeMode === "dark" ? `bg-card-body-dark` : "bg-white"
       }`}
     >
       <div className="h-[60%]">

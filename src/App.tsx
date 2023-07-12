@@ -22,7 +22,7 @@ function App() {
   return (
     <div
       className={`flex flex-col gap-4 ${
-        theme.theme === "dark"
+        theme.themeMode === "dark"
           ? "bg-body-dark text-white"
           : "bg-body-light text-black"
       }`}

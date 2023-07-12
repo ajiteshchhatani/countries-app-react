@@ -14,7 +14,7 @@ const ThemeButton = () => {
 
   return (
     <button className="flex items-center gap-2" onClick={handleThemeChange}>
-      {theme.theme === "dark" ? (
+      {theme.themeMode === "dark" ? (
         <img
           src={themeIconLight}
           alt="change theme icon"
@@ -29,7 +29,7 @@ const ThemeButton = () => {
           height={30}
         />
       )}
-      {theme.theme === "dark" ? "Light Mode" : "Dark Mode"}
+      {theme.themeMode === "dark" ? "Light Mode" : "Dark Mode"}
     </button>
   );
 };
