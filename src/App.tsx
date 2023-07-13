@@ -4,6 +4,7 @@ import { ThemeContext } from "./providers/ThemeProvider";
 import Filters, { Filter } from "./components/Filters";
 import Countries from "./components/Countries";
 import { useCountryListQuery } from "./hooks/useCountryListQuery";
+import SkeletonBox from "./components/SkeletonBox";
 
 function App() {
   const theme = useContext(ThemeContext);
@@ -30,13 +31,12 @@ function App() {
       <Navbar />
       <Filters handleAppliedFilters={handleAppliedFilters} />
       {isLoading ? (
-        <h1>Loading...</h1>
+        <SkeletonBox />
       ) : isError ? (
         <h1>Failed to fetch...</h1>
       ) : (
-        <Countries countries={countriesList as any[]} />
+        <Countries countries={countriesList} />
       )}
-      <h1>Some headlines text</h1>
     </div>
   );
 }

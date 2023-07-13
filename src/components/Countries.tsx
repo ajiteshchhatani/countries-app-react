@@ -51,7 +51,7 @@ const Countries = ({ countries }: CountriesPropType) => {
     };
   });
   return (
-    <div className="flex flex-wrap justify-between gap-4 p-2 md:p-4 overflow-x-hidden">
+    <div className="flex flex-col md:flex-row flex-wrap gap-4 lg:gap-6 p-4 overflow-x-hidden">
       {typedCountryInfo.map((i) => (
         <Card key={i.name} country={i} />
       ))}
