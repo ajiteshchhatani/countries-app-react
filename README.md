@@ -16,5 +16,8 @@ This app is created with React and TypeScript with Vite as a bundler and uses Ta
 - User can now click on a country and see selected country details
 - Light and dark mode support
 
+### Github pages deployment link
+- App can be viewed [here](https://ajiteshchhatani.github.io/countries-app-react/)
+
 #### Notes:
 - Some features are still WIP and may not work as expected. The bugs shall be resolved and tests will be added!

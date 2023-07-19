@@ -8,7 +8,7 @@ const SkeletonBox = () => {
     <div
       className={`flex flex-col md:flex-row flex-wrap justify-between gap-4 p-2 md:p-4 overflow-x-hidden`}
     >
-      {containers.map((c, index) => (
+      {containers.map((index) => (
         <div
           key={index}
           className={`flex flex-col gap-2 md:w-[22%] rounded-md h-[350px] ${

@@ -20,22 +20,27 @@ const AppWrapper = () => {
   );
 };
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          element: <Countries />,
+          index: true,
+        },
+        {
+          path: "country/:countryName",
+          element: <CountryDetail />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        element: <Countries />,
-        index: true,
-      },
-      {
-        path: "country/:countryName",
-        element: <CountryDetail />,
-      },
-    ],
-  },
-]);
+    basename: import.meta.env.DEV ? "/" : "/countries-app-react/",
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
