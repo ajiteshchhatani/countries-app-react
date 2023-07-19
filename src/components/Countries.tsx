@@ -1,4 +1,8 @@
+import { useEffect, useState } from "react";
+import { useCountryListQuery } from "../hooks/useCountryListQuery";
 import Card from "./Card";
+import SkeletonBox from "./SkeletonBox";
+import Filters, { Filter } from "./Filters";
 
 export interface CountryType {
   name: string;
@@ -30,12 +34,23 @@ export interface CountryType {
   borders: string[];
 }
 
-interface CountriesPropType {
-  countries: Array<any>;
-}
+const Countries = () => {
+  const [filters, setFilters] = useState<Filter>({ countries: "all" });
+  const [countriesList, setCountriesList] = useState<any[]>([]);
 
-const Countries = ({ countries }: CountriesPropType) => {
-  const typedCountryInfo: CountryType[] = countries.map((c) => {
+  const { data, isLoading, isError } = useCountryListQuery(filters);
+
+  useEffect(() => {
+    if (data) {
+      setCountriesList(data);
+    }
+  }, [data]);
+
+  const handleAppliedFilters = (filter: Filter) => {
+    setFilters(filter);
+  };
+
+  const typedCountryInfo: CountryType[] = countriesList!.map((c) => {
     return {
       name: c.name.common,
       nativeName: c.name.nativeName,
@@ -51,10 +66,19 @@ const Countries = ({ countries }: CountriesPropType) => {
     };
   });
   return (
-    <div className="flex flex-col md:flex-row flex-wrap gap-4 lg:gap-6 p-4 overflow-x-hidden">
-      {typedCountryInfo.map((i) => (
-        <Card key={i.name} country={i} />
-      ))}
+    <div>
+      <Filters handleAppliedFilters={handleAppliedFilters} />
+      {isLoading ? (
+        <SkeletonBox />
+      ) : isError ? (
+        <h1>Failed to fetch...</h1>
+      ) : (
+        <div className="flex flex-col md:flex-row flex-wrap gap-4 lg:gap-6 p-4 overflow-x-hidden">
+          {typedCountryInfo.map((i) => (
+            <Card key={i.name} country={i} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
