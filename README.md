@@ -13,6 +13,7 @@ This app is created with React and TypeScript with Vite as a bundler and uses Ta
 - Shows all countries on page load
 - User can search for particular countries by typing in the query in the search bar
 - User can filter countries by selecting a region from the dropdown
+- User can now click on a country and see selected country details
 - Light and dark mode support
 
 #### Notes:
